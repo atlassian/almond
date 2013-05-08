@@ -2,13 +2,29 @@
  * almond 0.2.5 Copyright (c) 2011-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/almond for details
+ *
+ * NOTE: This version of Almond.js contains modifications made by Atlassian.
+ *
+ * The modifications made by Atlassian add a noConflict function which allows for multiple versions
+ * of Almond.js to be used on a single page without interfering with any previously loaded version.
+ *
+ * Atlassian almond repository: https://github.com/atlassian/almond
+ * Diff of changes made: https://github.com/atlassian/almond/commit/a71ce555ad33f98eb308162c88832f1b366f2279
  */
+
 //Going sloppy to avoid 'use strict' string cost, but strict practices should
 //be followed.
 /*jslint sloppy: true */
 /*global setTimeout: false */
 
 (function (undef) {
+
+    /**
+     * Atlassian edit.
+     *
+     * Define variables pointing to previously defined versions of the require, requirejs and define
+     * global variables.
+     */
     var root = this;
 
     var previousRequirejs = root.requirejs,
@@ -406,6 +422,8 @@
     };
 
     /**
+     * Atlassian edit.
+     *
      * Set the global require, requirejs and define variables
      * back to what they were before this copy of almond was loaded
      * and return this versions global variables.
@@ -425,11 +443,13 @@
     };
 
     /**
+     * Atlassian edit.
+     *
      * Set the global define variable back to what it was
      * before this copy of almond was loaded and return this
      * version's global define variable.
      *
-     * @return Function The define function defined by this copy 
+     * @return Function The define function defined by this copy
      * of Almond.
      */
     define.noConflict = function() {
@@ -443,6 +463,8 @@
     };
 
     /**
+     * Atlassian edit.
+     *
      * Set the global defined, require and requirejs variables.
      */
     root.define = define;
